@@ -1,0 +1,27 @@
+User
+-username (pk?)
+-email
+-password
+-gravatar
+-created_at
+
+
+Question
+-id (pk)
+-body
+-tag
+-answer(fk)
+-comment(fk)
+-user(fk)
+-created_at
+
+Answer
+-body
+-user (fk)
+-comment (fk)
+-created_at
+
+Comment
+-body
+-user (fk)
+-created_at
