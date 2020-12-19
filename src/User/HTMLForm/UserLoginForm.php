@@ -74,5 +74,5 @@ class UserLoginForm extends FormModel
         $this->di->session->set("loggedInUserId", $user->id);
         $this->di->session->set("loggedInUserName", $user->username);
         return true;
-    }
+    } 
 }

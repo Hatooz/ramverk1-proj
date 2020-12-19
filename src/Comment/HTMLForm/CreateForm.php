@@ -1,10 +1,10 @@
 <?php
 
-namespace Hami\Question\HTMLForm;
+namespace Hami\Comment\HTMLForm;
 
 use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
-use Hami\Question\Question;
+use Hami\Comment\Comment;
 
 /**
  * Form to create an item.
@@ -24,30 +24,28 @@ class CreateForm extends FormModel
                 "id" => __CLASS__,
                 "legend" => "Details of the item",
             ],
-            [
-                "title" => [
-                    "type" => "text",
-                    "validation" => ["not_empty"],
-                ],
+            [                
                 "body" => [
                     "type" => "textarea",
                     "validation" => ["not_empty"],
                 ],
-                        
-                "tag" => [
-                    "type"      => "text",
-                    "label"     => "Add as many tags as you like separated by a comma:",
-                ],               
-
+                
+                "question" => [
+                    "type" => "text",
+                    "validation" => ["not_empty"],
+                    "readonly" => true,
+                    "value" => $this->di->session->get("currentQuestion")
+                ],
+                
                 "user" => [
-                    "type" => "hidden",
+                    "type" => "text",
                     "readonly" => true,
                     "value" => $this->di->session->get("loggedInUserName"),
                 ],
 
                 "submit" => [
                     "type" => "submit",
-                    "value" => "Create item",
+                    "value" => "Submit Answer",
                     "callback" => [$this, "callbackSubmit"]
                 ],
             ]
@@ -64,14 +62,12 @@ class CreateForm extends FormModel
      */
     public function callbackSubmit() : bool
     {
-        $question = new Question();
-        $question->setDb($this->di->get("dbqb"));
-        $question->title  = $this->form->value("title");
-        $question->body  = $this->form->value("body");
-        $question->tag = $this->form->value("tag");
-        // $question->tag = implode(",", $this->form->value("tag"));
-        $question->user = $this->form->value("user");
-        $question->save();
+        $comment = new Comment();
+        $comment->setDb($this->di->get("dbqb"));
+        $comment->body  = $this->form->value("body");
+        $comment->question  = $this->form->value("question");
+        $comment->user = $this->form->value("user");
+        $comment->save();
         return true;
     }
 
@@ -84,7 +80,7 @@ class CreateForm extends FormModel
      */
     public function callbackSuccess()
     {
-        $this->di->get("response")->redirect("question")->send();
+        $this->di->get("response")->redirect("comment")->send();
     }
 
 

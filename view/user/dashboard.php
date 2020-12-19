@@ -2,7 +2,7 @@
 
 namespace Anax\View;
 
-var_dump($allQuestions);
+// var_dump($allQuestions);
 ?><h1>View all items</h1>
  
  
@@ -18,7 +18,7 @@ var_dump($allQuestions);
     <?php foreach ($allQuestions as $question) : ?>
     <tr>
         <td>
-            <a href="<?= url("question/update/{$question->id}"); ?>"><?= $question->id ?></a>
+            <a href="<?= url("question/details/{$question->id}"); ?>"><?= $question->id ?></a>
         </td>
         <td><?= $question->body ?></td>
         <td><?= $question->tag ?></td>

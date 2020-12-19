@@ -23,5 +23,6 @@ Answer
 
 Comment
 -body
+-question (fk)
 -user (fk)
 -created_at

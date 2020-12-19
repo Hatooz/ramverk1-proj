@@ -1,15 +1,13 @@
 <?php
 
-namespace Hami\Question;
+namespace Hami\Comment;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
-use Hami\Answer\Answer;
-use Hami\MyTextFilter\MyTextFilter;
-use Hami\Question\HTMLForm\CreateForm;
-use Hami\Question\HTMLForm\EditForm;
-use Hami\Question\HTMLForm\DeleteForm;
-use Hami\Question\HTMLForm\UpdateForm;
+use Hami\Comment\HTMLForm\CreateForm;
+use Hami\Comment\HTMLForm\EditForm;
+use Hami\Comment\HTMLForm\DeleteForm;
+use Hami\Comment\HTMLForm\UpdateForm;
 
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
@@ -18,7 +16,7 @@ use Hami\Question\HTMLForm\UpdateForm;
 /**
  * A sample controller to show how a controller class can be implemented.
  */
-class QuestionController implements ContainerInjectableInterface
+class CommentController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
@@ -53,66 +51,15 @@ class QuestionController implements ContainerInjectableInterface
     public function indexActionGet() : object
     {
         $page = $this->di->get("page");
-        $question = new Question();
-        $question->setDb($this->di->get("dbqb"));
+        $comment = new Comment();
+        $comment->setDb($this->di->get("dbqb"));
 
-        $page->add("question/crud/view-all", [
-            "items" => $question->findAll(),
+        $page->add("comment/crud/view-all", [
+            "items" => $comment->findAll(),
         ]);
 
         return $page->render([
             "title" => "A collection of items",
-        ]);
-    }
-    /**
-     * Show one question.
-     *
-     * @return object as a response object
-     */
-    public function detailsActionGet(int $id) : object
-    {
-        $page = $this->di->get("page");
-        $filter = new MyTextFilter();
-        
-        $question = new Question();
-        $question->setDb($this->di->get("dbqb"));
-
-        $answers = new Answer();
-        $answers->setDb($this->di->get("dbqb"));
-
-        $resAnswers = $answers->findAllWhere("question = ?", $id);
-
-
-        $res = $question->find("id", $id);
-        $body = $filter->markdown($res->body);
-        $page->add("question/crud/details", [
-            "question" => $res,
-            "body" => $body,
-            "tag" => explode(",",$res->tag),
-            "items" => $res,
-            "answers" => $resAnswers,
-        ]);
-
-        $this->di->session->set("currentQuestion", $res->id);
-
-        return $page->render([
-            "title" => "Details",
-        ]);
-    }
-
-    public function tagsActionGet(string $tag) : object
-    {
-        $page = $this->di->get("page");
-        $question = new Question();        
-        $question->setDb($this->di->get("dbqb"));
-        $res = $question->findAllWhere("tag like ?", "%$tag%");
-        
-        $page->add("question/crud/tags", [           
-            "items" => $res,
-        ]);
-
-        return $page->render([
-            "title" => "tags",
         ]);
     }
 
@@ -129,7 +76,7 @@ class QuestionController implements ContainerInjectableInterface
         $form = new CreateForm($this->di);
         $form->check();
 
-        $page->add("question/crud/create", [
+        $page->add("comment/crud/create", [
             "form" => $form->getHTML(),
         ]);
 
@@ -151,7 +98,7 @@ class QuestionController implements ContainerInjectableInterface
         $form = new DeleteForm($this->di);
         $form->check();
 
-        $page->add("question/crud/delete", [
+        $page->add("comment/crud/delete", [
             "form" => $form->getHTML(),
         ]);
 
@@ -175,7 +122,7 @@ class QuestionController implements ContainerInjectableInterface
         $form = new UpdateForm($this->di, $id);
         $form->check();
 
-        $page->add("question/crud/update", [
+        $page->add("comment/crud/update", [
             "form" => $form->getHTML(),
         ]);
 

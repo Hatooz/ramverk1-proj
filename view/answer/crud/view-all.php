@@ -13,14 +13,11 @@ namespace Anax\View;
 $items = isset($items) ? $items : null;
 
 // Create urls for navigation
-$urlToCreate = url("question/create");
-$urlToDelete = url("question/delete");
+$urlToCreate = url("answer/create");
+$urlToDelete = url("answer/delete");
 
 
-// var_dump($items);
-var_dump($this->di->session->get("loggedInUserId"));
-var_dump($this->di->session->get("loggedInUserName"));
-$currentUser = $this->di->session->get("loggedInUserName");
+
 ?><h1>View all items</h1>
 
 <p>
@@ -38,18 +35,16 @@ endif;
 <table>
     <tr>
         <th>Id</th>
-        <th>Body</th>
-        <th>Tag</th>
-        <th>User</th>
+        <th>Column1</th>
+        <th>Column2</th>
     </tr>
     <?php foreach ($items as $item) : ?>
     <tr>
         <td>
-            <a href="<?= url("question/details/{$item->id}"); ?>"><?= $item->id ?></a>
+            <a href="<?= url("answer/update/{$item->id}"); ?>"><?= $item->id ?></a>
         </td>
         <td><?= $item->body ?></td>
-        <td><?= $item->tag ?></td>
-        <td><?= $item->user ?></td>
+        <td><?= $item->question ?></td>
     </tr>
     <?php endforeach; ?>
 </table>

@@ -61,13 +61,17 @@ class UserController implements ContainerInjectableInterface
 
         $questions = new Question();
         $questions->setDb($this->di->get("dbqb"));
-        $allQuestions = $questions->findQuestionsForUser($res->id);
+        $allQuestions = $questions->findQuestionsForUser($res->username);
 
-        $page->add("user/dashboard", [
-            "content" => "An index page",
-            "user" => $res ?? null,
-            "allQuestions" => $allQuestions ?? null
-        ]);
+        if (null != $this->di->session->get("loggedInUserName")) {
+            $page->add("user/dashboard", [
+                "content" => "An index page",
+                "user" => $res ?? null,
+                "allQuestions" => $allQuestions ?? null
+            ]);
+        } else {
+            return $this->loginAction();
+        }
 
         return $page->render([
             "title" => "A index page",
@@ -91,7 +95,7 @@ class UserController implements ContainerInjectableInterface
         $form = new UserLoginForm($this->di);
         $form->check();
 
-        $page->add("anax/v2/article/default", [
+        $page->add("user/login", [
             "content" => $form->getHTML(),
         ]);
 

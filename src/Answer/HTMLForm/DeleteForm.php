@@ -1,15 +1,15 @@
 <?php
 
-namespace Hami\Question\HTMLForm;
+namespace Hami\Answer\HTMLForm;
 
 use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
-use Hami\Question\Question;
+use Hami\Answer\Answer;
 
 /**
- * Form to create an item.
+ * Form to delete an item.
  */
-class CreateForm extends FormModel
+class DeleteForm extends FormModel
 {
     /**
      * Constructor injects with DI container.
@@ -22,36 +22,42 @@ class CreateForm extends FormModel
         $this->form->create(
             [
                 "id" => __CLASS__,
-                "legend" => "Details of the item",
+                "legend" => "Delete an item",
             ],
             [
-                "title" => [
-                    "type" => "text",
-                    "validation" => ["not_empty"],
-                ],
-                "body" => [
-                    "type" => "textarea",
-                    "validation" => ["not_empty"],
-                ],
-                        
-                "tag" => [
-                    "type"      => "text",
-                    "label"     => "Add as many tags as you like separated by a comma:",
-                ],               
-
-                "user" => [
-                    "type" => "hidden",
-                    "readonly" => true,
-                    "value" => $this->di->session->get("loggedInUserName"),
+                "select" => [
+                    "type"        => "select",
+                    "label"       => "Select item to delete:",
+                    "options"     => $this->getAllItems(),
                 ],
 
                 "submit" => [
                     "type" => "submit",
-                    "value" => "Create item",
+                    "value" => "Delete item",
                     "callback" => [$this, "callbackSubmit"]
                 ],
             ]
         );
+    }
+
+
+
+    /**
+     * Get all items as array suitable for display in select option dropdown.
+     *
+     * @return array with key value of all items.
+     */
+    protected function getAllItems() : array
+    {
+        $answer = new Answer();
+        $answer->setDb($this->di->get("dbqb"));
+
+        $answers = ["-1" => "Select an item..."];
+        foreach ($answer->findAll() as $obj) {
+            $answers[$obj->id] = "{$obj->column1} ({$obj->id})";
+        }
+
+        return $answers;
     }
 
 
@@ -64,14 +70,10 @@ class CreateForm extends FormModel
      */
     public function callbackSubmit() : bool
     {
-        $question = new Question();
-        $question->setDb($this->di->get("dbqb"));
-        $question->title  = $this->form->value("title");
-        $question->body  = $this->form->value("body");
-        $question->tag = $this->form->value("tag");
-        // $question->tag = implode(",", $this->form->value("tag"));
-        $question->user = $this->form->value("user");
-        $question->save();
+        $answer = new Answer();
+        $answer->setDb($this->di->get("dbqb"));
+        $answer->find("id", $this->form->value("select"));
+        $answer->delete();
         return true;
     }
 
@@ -84,7 +86,7 @@ class CreateForm extends FormModel
      */
     public function callbackSuccess()
     {
-        $this->di->get("response")->redirect("question")->send();
+        $this->di->get("response")->redirect("answer")->send();
     }
 
 

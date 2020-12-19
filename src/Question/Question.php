@@ -22,17 +22,30 @@ class Question extends ActiveRecordModel
      * @var integer $id primary key auto incremented.
      */
     public $id;
+    public $title;
     public $body;
     public $tag;
     public $user;
 
-    public function findQuestionsForUser($userId) 
+    public function findQuestionsForUser($username) 
     {
        
         $res = $this->db->select("*")
                ->from("Question")
                ->where("user = ?")
-               ->execute([$userId])
+               ->execute([$username])
+               ->fetchAll();
+        
+        return $res;
+    }
+
+    public function findQuestionsForTag($tag) 
+    {
+       
+        $res = $this->db->select("*")
+               ->from("Question")
+               ->where("title = ?")
+               ->execute([$tag])
                ->fetchAll();
         
         return $res;

@@ -17,24 +17,16 @@ $urlToCreate = url("question/create");
 $urlToDelete = url("question/delete");
 
 
-// var_dump($items);
-var_dump($this->di->session->get("loggedInUserId"));
-var_dump($this->di->session->get("loggedInUserName"));
-$currentUser = $this->di->session->get("loggedInUserName");
-?><h1>View all items</h1>
+var_dump($items);
+ 
+?><h1>tags</h1>
 
 <p>
     <a href="<?= $urlToCreate ?>">Create</a> | 
     <a href="<?= $urlToDelete ?>">Delete</a>
 </p>
 
-<?php if (!$items) : ?>
-    <p>There are no items to show.</p>
-<?php
-    return;
-endif;
-?>
-
+ 
 <table>
     <tr>
         <th>Id</th>
@@ -42,7 +34,7 @@ endif;
         <th>Tag</th>
         <th>User</th>
     </tr>
-    <?php foreach ($items as $item) : ?>
+    <?php foreach ($items as $key => $item) : ?>
     <tr>
         <td>
             <a href="<?= url("question/details/{$item->id}"); ?>"><?= $item->id ?></a>

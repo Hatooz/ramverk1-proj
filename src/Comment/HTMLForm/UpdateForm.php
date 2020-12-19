@@ -1,10 +1,10 @@
 <?php
 
-namespace Hami\Question\HTMLForm;
+namespace Hami\Comment\HTMLForm;
 
 use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
-use Hami\Question\Question;
+use Hami\Comment\Comment;
 
 /**
  * Form to update an item.
@@ -20,7 +20,7 @@ class UpdateForm extends FormModel
     public function __construct(ContainerInterface $di, $id)
     {
         parent::__construct($di);
-        $question = $this->getItemDetails($id);
+        $comment = $this->getItemDetails($id);
         $this->form->create(
             [
                 "id" => __CLASS__,
@@ -28,27 +28,22 @@ class UpdateForm extends FormModel
             ],
             [
                 "id" => [
-                    "type" => "hidden",
+                    "type" => "text",
                     "validation" => ["not_empty"],
                     "readonly" => true,
-                    "value" => $question->id,
+                    "value" => $comment->id,
                 ],
 
-                "title" => [
+                "column1" => [
                     "type" => "text",
                     "validation" => ["not_empty"],
-                    "value" => $question->body,
-                ],
-                "body" => [
-                    "type" => "textarea",
-                    "validation" => ["not_empty"],
-                    "value" => $question->body,
+                    "value" => $comment->column1,
                 ],
 
-                "tag" => [
+                "column2" => [
                     "type" => "text",
                     "validation" => ["not_empty"],
-                    "value" => $question->tag,
+                    "value" => $comment->column2,
                 ],
 
                 "submit" => [
@@ -71,14 +66,14 @@ class UpdateForm extends FormModel
      *
      * @param integer $id get details on item with id.
      * 
-     * @return Question
+     * @return Comment
      */
     public function getItemDetails($id) : object
     {
-        $question = new Question();
-        $question->setDb($this->di->get("dbqb"));
-        $question->find("id", $id);
-        return $question;
+        $comment = new Comment();
+        $comment->setDb($this->di->get("dbqb"));
+        $comment->find("id", $id);
+        return $comment;
     }
 
 
@@ -91,12 +86,12 @@ class UpdateForm extends FormModel
      */
     public function callbackSubmit() : bool
     {
-        $question = new Question();
-        $question->setDb($this->di->get("dbqb"));
-        $question->find("id", $this->form->value("id"));
-        $question->body = $this->form->value("body");
-        $question->tag = $this->form->value("tag");
-        $question->save();
+        $comment = new Comment();
+        $comment->setDb($this->di->get("dbqb"));
+        $comment->find("id", $this->form->value("id"));
+        $comment->column1 = $this->form->value("column1");
+        $comment->column2 = $this->form->value("column2");
+        $comment->save();
         return true;
     }
 
@@ -109,8 +104,8 @@ class UpdateForm extends FormModel
     //  */
     // public function callbackSuccess()
     // {
-    //     $this->di->get("response")->redirect("question")->send();
-    //     //$this->di->get("response")->redirect("question/update/{$question->id}");
+    //     $this->di->get("response")->redirect("comment")->send();
+    //     //$this->di->get("response")->redirect("comment/update/{$comment->id}");
     // }
 
 
