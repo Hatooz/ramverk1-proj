@@ -4,6 +4,7 @@ namespace Hami\Comment;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
+use Hami\Answer\Answer;
 use Hami\Comment\HTMLForm\CreateForm;
 use Hami\Comment\HTMLForm\EditForm;
 use Hami\Comment\HTMLForm\DeleteForm;
@@ -70,14 +71,26 @@ class CommentController implements ContainerInjectableInterface
      *
      * @return object as a response object
      */
-    public function createAction() : object
+    public function createAction(int $id = null) : object
     {
         $page = $this->di->get("page");
+        
+
+        if ($id) {
+           $answer = new Answer();
+           $answer->setDb($this->di->get("dbqb"));
+           $res = $answer->find("id", $id);
+           $this->di->session->set("currentAnswer", $res->id);
+        } else {
+            $this->di->session->set("currentAnswer", null);
+        }
         $form = new CreateForm($this->di);
         $form->check();
+       
 
         $page->add("comment/crud/create", [
             "form" => $form->getHTML(),
+            "answer" => $res ?? null
         ]);
 
         return $page->render([

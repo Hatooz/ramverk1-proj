@@ -5,6 +5,7 @@ namespace Hami\Question;
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 use Hami\Answer\Answer;
+use Hami\Comment\Comment;
 use Hami\MyTextFilter\MyTextFilter;
 use Hami\Question\HTMLForm\CreateForm;
 use Hami\Question\HTMLForm\EditForm;
@@ -82,7 +83,21 @@ class QuestionController implements ContainerInjectableInterface
 
         $resAnswers = $answers->findAllWhere("question = ?", $id);
 
+        $comments = new Comment();
+        $comments->setDb($this->di->get("dbqb"));
+        $resComments = $comments->findAllWhere("question = ?", $id);
+        
+        
 
+        foreach ($resAnswers as $key => $value) {
+            $value->comment = $answers->getComments($value->id);
+        }
+
+        
+        $showComments = $this->di->session->get("showComments") ?? false;
+        
+
+        
         $res = $question->find("id", $id);
         $body = $filter->markdown($res->body);
         $page->add("question/crud/details", [
@@ -91,6 +106,8 @@ class QuestionController implements ContainerInjectableInterface
             "tag" => explode(",",$res->tag),
             "items" => $res,
             "answers" => $resAnswers,
+            "comments" => $resComments,            
+            "showcomments" => $showComments
         ]);
 
         $this->di->session->set("currentQuestion", $res->id);
@@ -98,6 +115,18 @@ class QuestionController implements ContainerInjectableInterface
         return $page->render([
             "title" => "Details",
         ]);
+    }
+
+    public function detailsActionPost(int  $id) 
+    {
+        $doShowComments = $this->di->get("request")->getPost("doShowComments");
+        if ($doShowComments) {
+            $showComments = $this->di->session->get("showComments") ?? false;
+            $this->di->session->set("showComments", !$showComments);
+        }
+
+        return $this->di->get("response")->redirectSelf();    
+        
     }
 
     public function tagsActionGet(string $tag) : object

@@ -25,4 +25,15 @@ class Answer extends ActiveRecordModel
     public $body;    
     public $user;
     public $question;
+    public $comment;
+
+    public function getComments(int $id) {
+        $res = $this->db->select("*")
+        ->from("Comment")
+        ->where("answer = ?")
+        ->execute([$id])
+        ->fetchAll();
+ 
+    return $res;
+    }
 }

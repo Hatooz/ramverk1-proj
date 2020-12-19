@@ -13,6 +13,8 @@ CREATE TABLE Answer (
     "body" TEXT NOT NULL,    
     "user" INTEGER NOT NULL,
     "question" INTEGER NOT NULL,    
+    "comment" INTEGER,    
     FOREIGN KEY ("user") REFERENCES User ("id"),
-    FOREIGN KEY ("question") REFERENCES Question ("id")    
+    FOREIGN KEY ("question") REFERENCES Question ("id"),
+    FOREIGN KEY ("comment") REFERENCES Comment ("id")
 );

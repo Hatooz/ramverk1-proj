@@ -12,11 +12,15 @@ namespace Anax\View;
 // Gather incoming variables and use default values if not set
 $item = isset($item) ? $item : null;
 // var_dump($form);
-var_dump($answers);
+// var_dump($answers);
+// var_dump($comments);
+// var_dump($showcomments);
+// var_dump($commentsAnswer);
 
 // Create urls for navigation
 $urlToView = url("question");
 $urlToAnswer = url("answer/create");
+$urlToComment = url("comment/create");
 
 
 
@@ -31,15 +35,42 @@ $urlToAnswer = url("answer/create");
 
 <p><?= $body ?></p>
 
-
+<div class="answer">
 <h6><?php foreach ($answers as $key => $answer) : ?>
    
-   <p><?= $answer->body ?></p>
+
+       <p><?= $answer->body ?></p>
+    
+       <?php if ($showcomments) : ?> 
+       <?php foreach ($answer->comment as $key => $comment) : ?>
+       <p><?= $comment->body ?></p>
+       <?php endforeach; ?></h6>
+       <?php endif; ?>
+    
+       <a href="<?= url("comment/create/{$answer->id}"); ?>">Comment</a>
+
+   </div>
+
+<?php endforeach; ?></h6>
+ 
+
+<form action="" method="post">
+    <input type="submit" name="doShowComments" id="doShowComments" value="Show/Hide comments">
+</form>
+
+<?php if ($showcomments) : ?> 
+
+<h6><?php foreach ($comments as $key => $comment) : ?>
+   
+   <p><?= $comment->body ?></p>
   
 
 <?php endforeach; ?></h6>
+<?php endif; ?>
 
 <p>
     <a href="<?= $urlToView ?>">View all</a>
     <a href="<?= $urlToAnswer ?>">Answer</a>
+    <a href="<?= $urlToComment ?>">Comment</a>
 </p>
+ 

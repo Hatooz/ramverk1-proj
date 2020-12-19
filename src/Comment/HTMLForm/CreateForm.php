@@ -32,9 +32,15 @@ class CreateForm extends FormModel
                 
                 "question" => [
                     "type" => "text",
-                    "validation" => ["not_empty"],
+                    // "validation" => ["not_empty"],
                     "readonly" => true,
-                    "value" => $this->di->session->get("currentQuestion")
+                    "value" => $this->di->session->get("currentAnswer") ? null : $this->di->session->get("currentQuestion")
+                ],
+                "answer" => [
+                    "type" => "text",
+                    // "validation" => ["not_empty"],
+                    "readonly" => true,
+                    "value" => $this->di->session->get("currentAnswer")
                 ],
                 
                 "user" => [
@@ -66,6 +72,7 @@ class CreateForm extends FormModel
         $comment->setDb($this->di->get("dbqb"));
         $comment->body  = $this->form->value("body");
         $comment->question  = $this->form->value("question");
+        $comment->answer  = $this->form->value("answer");
         $comment->user = $this->form->value("user");
         $comment->save();
         return true;
@@ -80,7 +87,8 @@ class CreateForm extends FormModel
      */
     public function callbackSuccess()
     {
-        $this->di->get("response")->redirect("comment")->send();
+        $goto = $this->di->session->get("currentQuestion");
+        $this->di->get("response")->redirect("question/details/{$goto}")->send();
     }
 
 

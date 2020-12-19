@@ -11,7 +11,7 @@ namespace Anax\View;
 
 // Gather incoming variables and use default values if not set
 $items = isset($items) ? $items : null;
-
+var_dump($answer);
 // Create urls for navigation
 $urlToViewItems = url("comment");
 

@@ -43,8 +43,9 @@ endif;
         <td>
             <a href="<?= url("comment/update/{$item->id}"); ?>"><?= $item->id ?></a>
         </td>
-        <td><?= $item->column1 ?></td>
-        <td><?= $item->column2 ?></td>
+        <td><?= $item->body ?></td>
+        <td><?= $item->user ?></td>
+        <td><?= $item->answer ?></td>
     </tr>
     <?php endforeach; ?>
 </table>
