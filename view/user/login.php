@@ -14,7 +14,6 @@ $classes[] = "article";
 if (isset($class)) {
     $classes[] = $class;
 }
-var_dump($this->di->session->get("loggedInUserName"))
 
 ?><article <?= classList($classes) ?>>
 <?= $content ?>

@@ -17,15 +17,13 @@ $urlToCreate = url("question/create");
 $urlToDelete = url("question/delete");
 
 
-// var_dump($items);
-var_dump($this->di->session->get("loggedInUserId"));
-var_dump($this->di->session->get("loggedInUserName"));
+
 $currentUser = $this->di->session->get("loggedInUserName");
-?><h1>View all items</h1>
+?><h1>View all questions</h1>
 
 <p>
-    <a href="<?= $urlToCreate ?>">Create</a> | 
-    <a href="<?= $urlToDelete ?>">Delete</a>
+    <a href="<?= $urlToCreate ?>">New Question</a>
+    <!-- <a href="<?= $urlToDelete ?>">Delete</a> -->
 </p>
 
 <?php if (!$items) : ?>
@@ -35,10 +33,10 @@ $currentUser = $this->di->session->get("loggedInUserName");
 endif;
 ?>
 
-<table>
+<table class="crud-table">
     <tr>
         <th>Id</th>
-        <th>Body</th>
+        <th>Title</th>
         <th>Tag</th>
         <th>User</th>
     </tr>
@@ -47,7 +45,7 @@ endif;
         <td>
             <a href="<?= url("question/details/{$item->id}"); ?>"><?= $item->id ?></a>
         </td>
-        <td><?= $item->body ?></td>
+        <td><?= $item->title ?></td>
         <td><?= $item->tag ?></td>
         <td><?= $item->user ?></td>
     </tr>

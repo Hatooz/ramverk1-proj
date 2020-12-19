@@ -6,6 +6,7 @@ use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 use Hami\Answer\Answer;
 use Hami\Comment\Comment;
+use Anax\User\User;
 use Hami\MyTextFilter\MyTextFilter;
 use Hami\Question\HTMLForm\CreateForm;
 use Hami\Question\HTMLForm\EditForm;
@@ -88,9 +89,12 @@ class QuestionController implements ContainerInjectableInterface
         $resComments = $comments->findAllWhere("question = ?", $id);
         
         
+        $user = new User();
+        $user->setDb($this->di->get("dbqb"));
 
         foreach ($resAnswers as $key => $value) {
             $value->comment = $answers->getComments($value->id);
+            // $value->username = $user->findUser($value->user)->username;
         }
 
         
@@ -99,6 +103,7 @@ class QuestionController implements ContainerInjectableInterface
 
         
         $res = $question->find("id", $id);
+        
         $body = $filter->markdown($res->body);
         $page->add("question/crud/details", [
             "question" => $res,

@@ -64,4 +64,8 @@ class User extends ActiveRecordModel
     {
         return $this->find("username", $username);
     }
+    public function findUserById($id) 
+    {
+        return $this->find("id", $id);
+    }
 }

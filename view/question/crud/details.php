@@ -24,53 +24,64 @@ $urlToComment = url("comment/create");
 
 
 
-?><h1><?= $question->title ?></h1>
-<h6>Tags: <?php foreach ($tag as $tag) : ?>
-   
-    <a href="<?= url("question/tags/{$tag}"); ?>"><?= $tag ?></a>
-   
+?>
+<h1><?= $question->title ?></h1>
 
-<?php endforeach; ?></h6>
+<div class="question">
+Tags: <?php foreach ($tag as $tag) : ?>   
+    <a href="<?= url("question/tags/{$tag}"); ?>"><?= $tag ?></a>
+<?php endforeach; ?> 
+
+<h4>Question by <?= $question->user ?></h4>
 
 
 <p><?= $body ?></p>
 
-<div class="answer">
-<h6><?php foreach ($answers as $key => $answer) : ?>
-   
+    <?php if ($showcomments) : ?> 
+    <div class="comments">
+        <b>Comments</b>
+        <?php foreach ($comments as $key => $comment) : ?>
+        
+        <p><?= $comment->body ?></p>
+        
 
-       <p><?= $answer->body ?></p>
+        <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
     
-       <?php if ($showcomments) : ?> 
-       <?php foreach ($answer->comment as $key => $comment) : ?>
-       <p><?= $comment->body ?></p>
-       <?php endforeach; ?></h6>
-       <?php endif; ?>
-    
-       <a href="<?= url("comment/create/{$answer->id}"); ?>">Comment</a>
-
-   </div>
-
-<?php endforeach; ?></h6>
+    <form  class="detail-buttons" action="" method="post">
+        <input class="detail-button" type="submit" name="doShowComments" id="doShowComments" value="Show/Hide comments">
+        <a class="detail-button" href="<?= $urlToView ?>">View all</a>
+        <a class="detail-button" href="<?= $urlToAnswer ?>">Answer</a>
+        <a class="detail-button" href="<?= $urlToComment ?>">Comment</a>
+    </form>
  
+</div>
 
-<form action="" method="post">
-    <input type="submit" name="doShowComments" id="doShowComments" value="Show/Hide comments">
-</form>
 
-<?php if ($showcomments) : ?> 
 
-<h6><?php foreach ($comments as $key => $comment) : ?>
+<?php foreach ($answers as $key => $answer) : ?>
    
-   <p><?= $comment->body ?></p>
-  
+    <div class="answer">
+        <h4>Answer by <?= $answer->user ?></h4>
+        <p><?= $answer->body ?></p>
+    
+        <?php if ($showcomments) : ?> 
+            <div class="comments">
+            <b>Comments</b>
+            <?php foreach ($answer->comment as $key => $comment) : ?>
+            <p><?= $comment->body ?></p>
+            <?php endforeach; ?></h6>
+            </div>
+        <?php endif; ?>
+        <form  class="detail-buttons" action="" method="post">
+        <a href="<?= url("comment/create/{$answer->id}"); ?>">Comment</a>
+    </form>
+     
+       </div>
 
-<?php endforeach; ?></h6>
-<?php endif; ?>
+<?php endforeach; ?> 
 
-<p>
-    <a href="<?= $urlToView ?>">View all</a>
-    <a href="<?= $urlToAnswer ?>">Answer</a>
-    <a href="<?= $urlToComment ?>">Comment</a>
-</p>
- 
+
+
+
