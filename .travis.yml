@@ -1,9 +1,7 @@
 language: php
 
 php:
-    - "7.2"
-    - hhvm
-    - nightly
+    - "7.4"   
 
 matrix:
     allow_failures:
