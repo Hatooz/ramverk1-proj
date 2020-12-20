@@ -6951,14 +6951,17 @@ a.rm-button.rm-clicked .rm-button-face-2 {
 /**
  * My settings.
  */
-
+ 
 .question {
+  width: 100%;
+  float: right;
   background-color: #282a36;
   color: #39ff14;
   border: 2px solid #39ff14;
   border-radius: 10px;
   margin-bottom: 20px;
   padding: 20px;
+  font-family: 'Orbitron', sans-serif;
 }
 .answer {
   width: 100%;
@@ -6985,15 +6988,20 @@ a.rm-button.rm-clicked .rm-button-face-2 {
   
 }
 .detail-button {
-  color: #39ff14;
-  
-  background-color: #282a36;
+  color: #39ff14 !important;
+  background-color: #282a36 !important;
   padding: 5px;
   border-radius: 5px;
   margin-bottom: 20px;
-  border: none;
+  margin-right: 10px;
+  border: 1px solid #39ff14 !important;
+  float: right;
 }
 
+.question-buttons {
+  float: right;
+}
+ 
 textarea {
   background-color:#282a36;
   color: #39ff14;
@@ -7025,16 +7033,16 @@ h4 {
 }
 
 [type="submit"] {
-  color: #39ff14;
-  
-  background-color: #282a36;
+  color: #39ff14 !important;
+  background-color: #282a36 !important;
   padding: 5px;
   border-radius: 5px;
   margin-bottom: 20px;
-  border: none;
+  margin-right: 10px;
+  border: 1px solid #39ff14 !important;
 }
 
-.detail-buttons {
+/* .detail-buttons {
   float: right;
 }
 .detail-buttons a {
@@ -7045,7 +7053,7 @@ h4 {
   border-radius: 5px;
   margin-bottom: 20px;
   border: none;
-}
+} */
 .site-logo-text {
   color: black;
   visibility: hidden;
@@ -7058,6 +7066,8 @@ h4 {
 .wrap-all {
   background-color: #282a36 !important;
   color: #39ff14;
+  font-family: 'Orbitron', sans-serif;
+  
 }
 .wrap-all a{
   text-decoration: none;
@@ -7081,7 +7091,7 @@ h4 {
 }
 html {
   background-color: #282a36 !important;
-  color: #39ff14;
+  color: #39ff14;  
 }
 fieldset {
   border-color: #39ff14;
@@ -7091,6 +7101,7 @@ fieldset {
   width: 100%;
   text-align: center;  
   border-collapse: collapse;
+  margin-bottom: 30px;
 }
 .crud-table td {
   border: 1px solid  #39ff14;  
@@ -7099,5 +7110,13 @@ fieldset {
 .crud-table a {
   text-decoration: none;
   color: #39ff14;
+}
+
+.tag {
+  font-size: small;
+  background-color: #39ff14 !important;
+  color: #282a36 !important;
+  padding: 2px;
+  border-radius: 5px;
 }
 

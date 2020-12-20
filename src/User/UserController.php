@@ -5,6 +5,7 @@ namespace Hami\User;
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 use Anax\User\User;
+use Hami\Answer\Answer;
 use Hami\Question\Question;
 use Hami\User\HTMLForm\UserLoginForm;
 use Hami\User\HTMLForm\CreateUserForm;
@@ -63,21 +64,34 @@ class UserController implements ContainerInjectableInterface
         $questions->setDb($this->di->get("dbqb"));
         $allQuestions = $questions->findQuestionsForUser($res->username);
 
+        $answers = new Answer();
+        $answers->setDb($this->di->get("dbqb"));
+        $allAnswers = $answers->findAllWhere("user = ?", $user->username);
+        
+
         if (null != $this->di->session->get("loggedInUserName")) {
             $page->add("user/dashboard", [
                 "content" => "An index page",
                 "user" => $res ?? null,
-                "allQuestions" => $allQuestions ?? null
+                "allQuestions" => $allQuestions ?? null,
+                "allAnswers" => $allAnswers ?? null,
             ]);
         } else {
-            return $this->loginAction();
+            $this->di->get("response")->redirect("user/login")->send();
         }
 
         return $page->render([
             "title" => "A index page",
         ]);
     }
-
+    public function indexActionPost() 
+    {
+        $logout = $this->di->get("request")->getPost("logout");
+        if ($logout) {
+            $this->di->session->set("loggedInUserName", null);
+            $this->di->get("response")->redirect("user")->send();
+        }
+    }
 
 
     /**
@@ -91,6 +105,9 @@ class UserController implements ContainerInjectableInterface
      */
     public function loginAction() : object
     {
+        if (null != $this->di->session->get("loggedInUserName")) {
+            $this->di->get("response")->redirect("user")->send();
+        } 
         $page = $this->di->get("page");
         $form = new UserLoginForm($this->di);
         $form->check();

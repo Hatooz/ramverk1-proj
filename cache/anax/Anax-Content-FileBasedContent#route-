@@ -1,0 +1,57 @@
+O:8:"stdClass":7:{s:4:"file";s:8:"index.md";s:7:"section";s:0:"";s:5:"level";i:0;s:8:"internal";b:0;s:7:"tocable";b:0;s:5:"views";a:2:{s:5:"flash";a:3:{s:6:"region";s:5:"flash";s:8:"template";s:21:"anax/v2/image/default";s:4:"data";a:1:{s:3:"src";s:68:"image/theme/tree.jpg?width=1100&height=150&crop-to-fit&area=0,0,30,0";}}s:4:"main";a:2:{s:8:"template";s:23:"anax/v2/article/default";s:4:"data";a:3:{s:5:"title";s:14:"Min fina titel";s:7:"content";s:1783:"<h1>Min me-sida i kursen ramverk1</h1>
+
+<p>Detta innehåll är skrivet i markdown och du hittar innehållet i filen <code>content/index.md</code>.</p>
+
+<figure class="figure right">
+<a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/me.jpg"><img src="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/me.jpg?w=400" alt="Bild på mig"/></a>
+<figcaption>
+
+<p>Bild på mig</p>
+
+</figcaption>
+</figure>
+
+<p>Detta är min me-sida i kursen. Denna sidan innehåller en presentation av mig själv. Underhåll denna sidan under hela kursen och uppdatera den efter hand och behov.</p>
+
+<p>Så, en presentation en bra början. Skriv några ord om dig själv. Jag börjar.</p>
+
+<p>Mitt namn är Mikael Roos. Född och uppvuxen i Bankeryd, Småland, strax utanför Jönköping, i ett villaområde som byggdes upp samtidigt som vi flyttade in där. Jag gillade landhockey och har spelat bandy och hockey samt gått bowlinggymnasiet i Nässjö. Jag har varit städare, diskare, kallskänka, servitör och kock. På ett bananskal landade jag i Ronneby när jag började högskolan 1990 där och nu är jag kvar med fru, barn och så vidare.</p>
+
+<p>Programmering har alltid intresserat mig sedan 13-årsåldern och min första dator var en Spectravideo 328 med bandspelare.</p>
+
+<p>Om jag skall nämna någon hobby, förutom webbprogrammering, så får det bli att bära sten på sommarstugetomten, och det finns sten så det räcker och blir över.</p>
+
+<p>Till och från får jag för mig att börja på lite hobbies, ett år satsade jag på pokerspel, ett annat år var det geocaching och sedan turfing. Nu ligger jag lågt med hobbies, men något kanske dyker upp&#8230;?</p>
+
+<p>Vi syns och hörs i forum och chatt!</p>
+
+<p>/Mikael</p>
+";s:7:"excerpt";s:1783:"<h1>Min me-sida i kursen ramverk1</h1>
+
+<p>Detta innehåll är skrivet i markdown och du hittar innehållet i filen <code>content/index.md</code>.</p>
+
+<figure class="figure right">
+<a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/me.jpg"><img src="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/me.jpg?w=400" alt="Bild på mig"/></a>
+<figcaption>
+
+<p>Bild på mig</p>
+
+</figcaption>
+</figure>
+
+<p>Detta är min me-sida i kursen. Denna sidan innehåller en presentation av mig själv. Underhåll denna sidan under hela kursen och uppdatera den efter hand och behov.</p>
+
+<p>Så, en presentation en bra början. Skriv några ord om dig själv. Jag börjar.</p>
+
+<p>Mitt namn är Mikael Roos. Född och uppvuxen i Bankeryd, Småland, strax utanför Jönköping, i ett villaområde som byggdes upp samtidigt som vi flyttade in där. Jag gillade landhockey och har spelat bandy och hockey samt gått bowlinggymnasiet i Nässjö. Jag har varit städare, diskare, kallskänka, servitör och kock. På ett bananskal landade jag i Ronneby när jag började högskolan 1990 där och nu är jag kvar med fru, barn och så vidare.</p>
+
+<p>Programmering har alltid intresserat mig sedan 13-årsåldern och min första dator var en Spectravideo 328 med bandspelare.</p>
+
+<p>Om jag skall nämna någon hobby, förutom webbprogrammering, så får det bli att bära sten på sommarstugetomten, och det finns sten så det räcker och blir över.</p>
+
+<p>Till och från får jag för mig att börja på lite hobbies, ett år satsade jag på pokerspel, ett annat år var det geocaching och sedan turfing. Nu ligger jag lågt med hobbies, men något kanske dyker upp&#8230;?</p>
+
+<p>Vi syns och hörs i forum och chatt!</p>
+
+<p>/Mikael</p>
+";}}}s:11:"frontmatter";a:1:{s:5:"title";s:14:"Min fina titel";}}

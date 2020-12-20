@@ -25,11 +25,16 @@ $urlToComment = url("comment/create");
 
 
 ?>
+
 <h1><?= $question->title ?></h1>
+<form  action="" method="post">
+    <input class="detail-button" type="submit" name="doShowComments" id="doShowComments" value="Show/Hide comments">   
+    <a class="detail-button question-buttons" href="<?= $urlToView ?>">Back to all qeustions</a>     
+</form>
 
 <div class="question">
 Tags: <?php foreach ($tag as $tag) : ?>   
-    <a href="<?= url("question/tags/{$tag}"); ?>"><?= $tag ?></a>
+    <a class="tag" href="<?= url("question/tags/{$tag}"); ?>"><?= $tag ?></a>
 <?php endforeach; ?> 
 
 <h4>Question by <?= $question->user ?></h4>
@@ -42,20 +47,17 @@ Tags: <?php foreach ($tag as $tag) : ?>
         <b>Comments</b>
         <?php foreach ($comments as $key => $comment) : ?>
         
-        <p><?= $comment->body ?></p>
+        <p><?= $comment->body ?> - by <?= $comment->user ?></p>
         
 
         <?php endforeach; ?>
         </div>
     <?php endif; ?>
     
-    <form  class="detail-buttons" action="" method="post">
-        <input class="detail-button" type="submit" name="doShowComments" id="doShowComments" value="Show/Hide comments">
-        <a class="detail-button" href="<?= $urlToView ?>">View all</a>
-        <a class="detail-button" href="<?= $urlToAnswer ?>">Answer</a>
-        <a class="detail-button" href="<?= $urlToComment ?>">Comment</a>
-    </form>
- 
+   
+        
+    <a class="detail-button question-buttons" href="<?= $urlToComment ?>">Comment</a>
+        <a class="detail-button question-buttons" href="<?= $urlToAnswer ?>">Answer</a>
 </div>
 
 
@@ -70,12 +72,12 @@ Tags: <?php foreach ($tag as $tag) : ?>
             <div class="comments">
             <b>Comments</b>
             <?php foreach ($answer->comment as $key => $comment) : ?>
-            <p><?= $comment->body ?></p>
+            <p><?= $comment->body ?> - by <?= $comment->user ?></p>
             <?php endforeach; ?></h6>
             </div>
         <?php endif; ?>
         <form  class="detail-buttons" action="" method="post">
-        <a href="<?= url("comment/create/{$answer->id}"); ?>">Comment</a>
+        <a class="detail-button" href="<?= url("comment/create/{$answer->id}"); ?>">Comment</a>
     </form>
      
        </div>

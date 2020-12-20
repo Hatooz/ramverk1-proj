@@ -1,0 +1,39 @@
+O:8:"stdClass":7:{s:4:"file";s:5:"om.md";s:7:"section";s:0:"";s:5:"level";i:0;s:8:"internal";b:0;s:7:"tocable";b:0;s:5:"views";a:4:{s:5:"flash";a:3:{s:6:"region";s:5:"flash";s:8:"template";s:21:"anax/v2/image/default";s:4:"data";a:1:{s:3:"src";s:68:"image/theme/tree.jpg?width=1100&height=150&crop-to-fit&area=0,0,30,0";}}s:8:"kursrepo";a:4:{s:5:"title";s:8:"Kursrepo";s:4:"data";a:2:{s:7:"content";s:305:"<h4>Kursrepo</h4>
+
+<p>Skriv något kort om kursen och länka till <a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/XXX">kursens hemsida på dbwebb.se</a> och till <a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/XXX">kursrepot på GitHub</a>.</p>
+";s:4:"meta";a:2:{s:4:"type";s:6:"single";s:5:"route";s:17:"block/om-kursrepo";}}s:6:"region";s:13:"sidebar-right";s:8:"template";s:21:"anax/v2/block/default";}s:8:"redovisa";a:4:{s:5:"title";s:19:"Redovisa på GitHub";s:4:"data";a:2:{s:7:"content";s:215:"<h4>Redovisa på GitHub</h4>
+
+<p>Skriv något kort om ditt redovisa-repo och länka till <a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/XXX">repot för me/redovisa på GitHub</a>.</p>
+";s:4:"meta";a:2:{s:4:"type";s:6:"single";s:5:"route";s:17:"block/om-redovisa";}}s:6:"region";s:13:"sidebar-right";s:8:"template";s:21:"anax/v2/block/default";}s:4:"main";a:2:{s:8:"template";s:23:"anax/v2/article/default";s:4:"data";a:2:{s:7:"content";s:565:"<h1>Om</h1>
+
+<p>Detta innehåll är skrivet i markdown och du hittar innehållet i filen <code>content/om.md</code>.</p>
+
+<p>Skriv några kloka ord om kursen?</p>
+
+<p>Lägg till en representativ bild för kursen, enligt ditt egna val.</p>
+
+<figure class="figure">
+<a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/car.png"><img src="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/car.png?w=300" alt="En fin bil som demobild."/></a>
+<figcaption>
+
+<p>En fin bil som demobild.</p>
+
+</figcaption>
+</figure>
+";s:7:"excerpt";s:565:"<h1>Om</h1>
+
+<p>Detta innehåll är skrivet i markdown och du hittar innehållet i filen <code>content/om.md</code>.</p>
+
+<p>Skriv några kloka ord om kursen?</p>
+
+<p>Lägg till en representativ bild för kursen, enligt ditt egna val.</p>
+
+<figure class="figure">
+<a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/car.png"><img src="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/car.png?w=300" alt="En fin bil som demobild."/></a>
+<figcaption>
+
+<p>En fin bil som demobild.</p>
+
+</figcaption>
+</figure>
+";}}}s:11:"frontmatter";a:2:{s:5:"views";a:2:{s:8:"kursrepo";a:3:{s:6:"region";s:13:"sidebar-right";s:8:"template";s:21:"anax/v2/block/default";s:4:"data";a:1:{s:4:"meta";a:2:{s:4:"type";s:6:"single";s:5:"route";s:17:"block/om-kursrepo";}}}s:8:"redovisa";a:3:{s:6:"region";s:13:"sidebar-right";s:8:"template";s:21:"anax/v2/block/default";s:4:"data";a:1:{s:4:"meta";a:2:{s:4:"type";s:6:"single";s:5:"route";s:17:"block/om-redovisa";}}}}s:5:"title";s:2:"Om";}}

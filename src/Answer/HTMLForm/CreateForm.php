@@ -80,7 +80,8 @@ class CreateForm extends FormModel
      */
     public function callbackSuccess()
     {
-        $this->di->get("response")->redirect("answer")->send();
+        $goto = $this->di->session->get("currentQuestion");
+        $this->di->get("response")->redirect("question/details/{$goto}")->send();
     }
 
 

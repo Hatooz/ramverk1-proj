@@ -75,4 +75,10 @@ class UserLoginForm extends FormModel
         $this->di->session->set("loggedInUserName", $user->username);
         return true;
     } 
+
+    public function callbackSuccess()
+    {
+        
+        $this->di->get("response")->redirect("user")->send();
+    }
 }
