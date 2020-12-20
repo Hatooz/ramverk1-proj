@@ -26,6 +26,12 @@ class Question extends ActiveRecordModel
     public $body;
     public $tag;
     public $user;
+    public $created;
+
+    public function createdAt() {
+        $date = new \DateTime();
+        $this->created = $date->getTimestamp();
+    }
 
     public function findQuestionsForUser($username) 
     {
@@ -46,6 +52,48 @@ class Question extends ActiveRecordModel
                ->from("Question")
                ->where("title = ?")
                ->execute([$tag])
+               ->fetchAll();
+        
+        return $res;
+    }
+    public function findTopUsers() 
+    {
+        // $sql = 'select user, COUNT(*) from question group by user order by 2 desc;';
+        $sql = 'select * from question;';
+        $res = $this->db->select("user, COUNT(*)")
+               ->from("Question")            
+               ->groupBy("user")
+               ->orderBy("2 desc")
+               ->limit(10)
+               ->execute()
+               ->fetchAll();
+        
+        return $res;
+    }
+    public function findTopTags() 
+    {
+        // $sql = 'select user, COUNT(*) from question group by user order by 2 desc;';
+        $sql = 'select * from tag;';
+        $res = $this->db->select("title, COUNT(*)")
+               ->from("Tag")            
+               ->groupBy("title")
+               ->orderBy("2 desc")
+               ->limit(10)
+               ->execute()
+               ->fetchAll();
+        
+        return $res;
+    }
+    public function findLatestQuestions() 
+    {
+        // $sql = 'select user, COUNT(*) from question group by user order by 2 desc;';
+        $sql = 'select * from tag;';
+        $res = $this->db->select("*")
+               ->from("Question")            
+               ->groupBy("created")
+               ->orderBy("2 asc")
+               ->limit(10)
+               ->execute()
                ->fetchAll();
         
         return $res;

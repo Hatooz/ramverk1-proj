@@ -6982,11 +6982,12 @@ a.rm-button.rm-clicked .rm-button-face-2 {
 .answer a {
   color: #39ff14;
   text-decoration: none;
-  background-color: black;
+  /* background-color: black; */
   padding: 5px;
   border-radius: 5px;
   
 }
+
 .detail-button {
   color: #39ff14 !important;
   background-color: #282a36 !important;
@@ -7120,3 +7121,35 @@ fieldset {
   border-radius: 5px;
 }
 
+.profile-bubble {
+  width: 30%;
+  background-color: #3b3e50;
+  /* float: right; */
+  position: relative;
+  margin-left: 70%;
+  margin-top: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100px;
+}
+
+.profile-bubble img {
+  width: 40px;
+}
+.answer-button {
+  float: left;
+  margin-bottom: 40px;
+}
+.detail-gravatar {
+  border-radius: 10px;
+  margin-left: 5px;
+  width: 50%;
+}
+
+.comment {
+  width: 30%;
+  margin-left: 70%;
+  border-bottom: 1px solid #39ff14;
+  margin-bottom: 10px;
+} 

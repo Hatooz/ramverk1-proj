@@ -26,4 +26,15 @@ class Comment extends ActiveRecordModel
     public $user;
     public $question;
     public $answer;
+
+    public function getUserGravatar(string $user) {
+        $res = $this->db->select("*")
+        ->from("User")
+        ->where("username = ?")
+        ->execute([$user])
+        ->fetch();
+        
+ 
+        return $res->gravatar;
+    }
 }

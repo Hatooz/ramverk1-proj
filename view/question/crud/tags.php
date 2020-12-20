@@ -17,20 +17,16 @@ $urlToCreate = url("question/create");
 $urlToDelete = url("question/delete");
 
 
-var_dump($items);
+// var_dump($items);
  
-?><h1>tags</h1>
-
-<p>
-    <a href="<?= $urlToCreate ?>">Create</a> | 
-    <a href="<?= $urlToDelete ?>">Delete</a>
-</p>
+?><h1>Questions with '<?= $tag ?>' tag</h1>
 
  
-<table>
+ 
+<table class="crud-table">
     <tr>
         <th>Id</th>
-        <th>Body</th>
+        <th>Title</th>
         <th>Tag</th>
         <th>User</th>
     </tr>
@@ -39,7 +35,7 @@ var_dump($items);
         <td>
             <a href="<?= url("question/details/{$item->id}"); ?>"><?= $item->id ?></a>
         </td>
-        <td><?= $item->body ?></td>
+        <td><?= $item->title ?></td>
         <td><?= $item->tag ?></td>
         <td><?= $item->user ?></td>
     </tr>

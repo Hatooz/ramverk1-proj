@@ -57,13 +57,18 @@ class QuestionController implements ContainerInjectableInterface
         $page = $this->di->get("page");
         $question = new Question();
         $question->setDb($this->di->get("dbqb"));
+        
 
         $page->add("question/crud/view-all", [
             "items" => $question->findAll(),
+            "topusers" => $question->findTopUsers(),
+            "toptags" => $question->findTopTags(),
+            "latestQuestions" => $question->findLatestQuestions()
         ]);
 
         return $page->render([
             "title" => "A collection of items",
+            
         ]);
     }
     /**
@@ -78,10 +83,11 @@ class QuestionController implements ContainerInjectableInterface
         
         $question = new Question();
         $question->setDb($this->di->get("dbqb"));
+        $res = $question->find("id", $id);        
+        $body = $filter->markdown($res->body);
 
         $answers = new Answer();
         $answers->setDb($this->di->get("dbqb"));
-
         $resAnswers = $answers->findAllWhere("question = ?", $id);
 
         $comments = new Comment();
@@ -93,18 +99,20 @@ class QuestionController implements ContainerInjectableInterface
         $user->setDb($this->di->get("dbqb"));
 
         foreach ($resAnswers as $key => $value) {
-            $value->comment = $answers->getComments($value->id);
-            // $value->username = $user->findUser($value->user)->username;
-        }
-
+            $value->comment = $answers->getComments($value->id);            
+            $value->body = $filter->markdown($value->body);
+            $value->gravatar = $answers->getUserGravatar($value->user);
+            for ($i=0; $i < count($value->comment) ; $i++) { 
+                $value->comment[$i]->body = $filter->markdown($value->comment[$i]->body);
+                $value->comment[$i]->gravatar = $comments->getUserGravatar($value->comment[$i]->user);
+            }              
+        }     
         
         $showComments = $this->di->session->get("showComments") ?? false;
         
 
         
-        $res = $question->find("id", $id);
-        
-        $body = $filter->markdown($res->body);
+       
         $page->add("question/crud/details", [
             "question" => $res,
             "body" => $body,
@@ -143,6 +151,7 @@ class QuestionController implements ContainerInjectableInterface
         
         $page->add("question/crud/tags", [           
             "items" => $res,
+            "tag" => $tag
         ]);
 
         return $page->render([

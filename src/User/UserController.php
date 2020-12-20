@@ -9,6 +9,7 @@ use Hami\Answer\Answer;
 use Hami\Question\Question;
 use Hami\User\HTMLForm\UserLoginForm;
 use Hami\User\HTMLForm\CreateUserForm;
+use Hami\User\HTMLForm\UpdateUserForm;
 
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
@@ -122,6 +123,33 @@ class UserController implements ContainerInjectableInterface
     }
 
 
+public function contributionsActionGet(string $username = null) : object
+    {
+        $page = $this->di->get("page");
+        $user = new User();
+        $user->setDb($this->di->get("dbqb"));
+        $res = $user->findUser($username);
+
+        $questions = new Question();
+        $questions->setDb($this->di->get("dbqb"));
+        $allQuestions = $questions->findQuestionsForUser($res->username);
+
+        $answers = new Answer();
+        $answers->setDb($this->di->get("dbqb"));
+        $allAnswers = $answers->findAllWhere("user = ?", $user->username);
+
+        $page->add("user/contributions", [
+            "content" => "An index page",
+            "user" => $res ?? null,
+            "allQuestions" => $allQuestions ?? null,
+            "allAnswers" => $allAnswers ?? null,
+        ]);
+        
+        return $page->render([
+            "title" => "A index page",
+        ]);
+    }
+
 
     /**
      * Description.
@@ -144,6 +172,28 @@ class UserController implements ContainerInjectableInterface
 
         return $page->render([
             "title" => "A create user page",
+        ]);
+    }
+
+     /**
+     * Handler with form to update an item.
+     *
+     * @param int $id the id to update.
+     *
+     * @return object as a response object
+     */
+    public function updateAction(int $id) : object
+    {
+        $page = $this->di->get("page");
+        $form = new UpdateUserForm($this->di, $id);
+        $form->check();
+
+        $page->add("user/update", [
+            "form" => $form->getHTML(),
+        ]);
+
+        return $page->render([
+            "title" => "Update an item",
         ]);
     }
 }

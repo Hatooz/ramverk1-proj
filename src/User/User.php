@@ -22,6 +22,7 @@ class User extends ActiveRecordModel
     public $id;
     public $username;
     public $password;
+    public $gravatar;
     public $created;
     public $updated;
     public $deleted;
@@ -67,5 +68,18 @@ class User extends ActiveRecordModel
     public function findUserById($id) 
     {
         return $this->find("id", $id);
+    }
+
+    public function setGravatar( $email, $s = 80, $d = 'mp', $r = 'g', $img = false, $atts = array() ) {
+        $url = 'https://www.gravatar.com/avatar/';
+        $url .= md5( strtolower( trim( $email ) ) );
+        $url .= "?s=$s&d=$d&r=$r";
+        if ( $img ) {
+            $url = '<img src="' . $url . '"';
+            foreach ( $atts as $key => $val )
+                $url .= ' ' . $key . '="' . $val . '"';
+            $url .= ' />';
+        }
+        $this->gravatar = $url;
     }
 }

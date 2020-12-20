@@ -1,10 +1,9 @@
 <?php
 
-namespace Hami\Question\HTMLForm;
+namespace Hami\Tag\HTMLForm;
 
 use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
-use Hami\Question\Question;
 use Hami\Tag\Tag;
 
 /**
@@ -23,27 +22,17 @@ class CreateForm extends FormModel
         $this->form->create(
             [
                 "id" => __CLASS__,
-                "legend" => "Question details",
+                "legend" => "Details of the item",
             ],
             [
                 "title" => [
                     "type" => "text",
                     "validation" => ["not_empty"],
                 ],
-                "body" => [
-                    "type" => "textarea",
-                    "validation" => ["not_empty"],
-                ],
                         
-                "tag" => [
-                    "type"      => "text",
-                    "label"     => "Add as many tags as you like separated by a comma:",
-                ],               
-
-                "user" => [
-                    "type" => "hidden",
-                    "readonly" => true,
-                    "value" => $this->di->session->get("loggedInUserName"),
+                "question" => [
+                    "type" => "text",
+                    "validation" => ["not_empty"],
                 ],
 
                 "submit" => [
@@ -65,26 +54,11 @@ class CreateForm extends FormModel
      */
     public function callbackSubmit() : bool
     {
-        $question = new Question();
-        $question->setDb($this->di->get("dbqb"));
-        $question->title  = $this->form->value("title");
-        $question->body  = $this->form->value("body");
-        $question->tag = $this->form->value("tag");
-        $question->createdAt();
-        
-        $separateTags = explode(", ", $this->form->value("tag"));
-        
-        foreach ($separateTags as $newTag) {
-            $tag = new Tag();
-            $tag->setDb($this->di->get("dbqb"));
-            $tag->title = $newTag;
-            $tag->question = $this->form->value("title");
-            $tag->save();
-        }
-
-
-        $question->user = $this->form->value("user");
-        $question->save();
+        $tag = new Tag();
+        $tag->setDb($this->di->get("dbqb"));
+        $tag->column1  = $this->form->value("column1");
+        $tag->column2 = $this->form->value("column2");
+        $tag->save();
         return true;
     }
 
@@ -97,7 +71,7 @@ class CreateForm extends FormModel
      */
     public function callbackSuccess()
     {
-        $this->di->get("response")->redirect("question")->send();
+        $this->di->get("response")->redirect("tag")->send();
     }
 
 

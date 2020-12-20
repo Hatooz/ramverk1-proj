@@ -11,11 +11,6 @@ namespace Anax\View;
 
 // Gather incoming variables and use default values if not set
 $item = isset($item) ? $item : null;
-// var_dump($form);
-// var_dump($answers);
-// var_dump($comments);
-// var_dump($showcomments);
-// var_dump($commentsAnswer);
 
 // Create urls for navigation
 $urlToView = url("question");
@@ -29,7 +24,7 @@ $urlToComment = url("comment/create");
 <h1><?= $question->title ?></h1>
 <form  action="" method="post">
     <input class="detail-button" type="submit" name="doShowComments" id="doShowComments" value="Show/Hide comments">   
-    <a class="detail-button question-buttons" href="<?= $urlToView ?>">Back to all qeustions</a>     
+    <a class="detail-button question-buttons" href="<?= $urlToView ?>">Back to all questions</a>     
 </form>
 
 <div class="question">
@@ -37,7 +32,7 @@ Tags: <?php foreach ($tag as $tag) : ?>
     <a class="tag" href="<?= url("question/tags/{$tag}"); ?>"><?= $tag ?></a>
 <?php endforeach; ?> 
 
-<h4>Question by <?= $question->user ?></h4>
+<h4>Question by <a class="" href="<?= url("user/contributions/{$question->user}"); ?>"><?= $question->user ?></a></h4>
 
 
 <p><?= $body ?></p>
@@ -47,7 +42,7 @@ Tags: <?php foreach ($tag as $tag) : ?>
         <b>Comments</b>
         <?php foreach ($comments as $key => $comment) : ?>
         
-        <p><?= $comment->body ?> - by <?= $comment->user ?></p>
+        <p><?= $comment->body ?> - by <a class="" href="<?= url("user/contributions/{$comment->user}"); ?>"><?= $comment->user ?></a></p>
         
 
         <?php endforeach; ?>
@@ -61,26 +56,37 @@ Tags: <?php foreach ($tag as $tag) : ?>
 </div>
 
 
-
+<h1>Answers</h1>
 <?php foreach ($answers as $key => $answer) : ?>
    
     <div class="answer">
-        <h4>Answer by <?= $answer->user ?></h4>
+
+        
         <p><?= $answer->body ?></p>
     
         <?php if ($showcomments) : ?> 
             <div class="comments">
-            <b>Comments</b>
+            <b class="comment">Comments</b>
             <?php foreach ($answer->comment as $key => $comment) : ?>
-            <p><?= $comment->body ?> - by <?= $comment->user ?></p>
+             <div class="comment"> 
+                <?= $comment->body ?>
+                Comment by <a class="" href="<?= url("user/contributions/{$comment->user}"); ?>"><?= $comment->user ?></a>            
+            </div>
+
             <?php endforeach; ?></h6>
             </div>
         <?php endif; ?>
-        <form  class="detail-buttons" action="" method="post">
-        <a class="detail-button" href="<?= url("comment/create/{$answer->id}"); ?>">Comment</a>
-    </form>
+        
+    <div><a class="detail-button answer-button" href="<?= url("comment/create/{$answer->id}"); ?>">Comment</a></div>
+        
+
+        <div class="profile-bubble">
+            Answer by <a class="" href="<?= url("user/contributions/{$answer->user}"); ?>"><?= $answer->user ?></a>
+            <img class="detail-gravatar" src="<?php echo $answer->gravatar; ?>" alt="" />
+
+        </div>
      
-       </div>
+    </div>
 
 <?php endforeach; ?> 
 

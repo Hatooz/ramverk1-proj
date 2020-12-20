@@ -14,5 +14,6 @@ CREATE TABLE Question (
     "body" TEXT NOT NULL,
     "tag" TEXT NOT NULL,
     "user" INTEGER NOT NULL,
+    "created" TIMESTAMP,
     FOREIGN KEY ("user") REFERENCES User ("id")    
 );

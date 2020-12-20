@@ -34,7 +34,18 @@ class Answer extends ActiveRecordModel
         ->execute([$id])
         ->fetchAll();
  
-    return $res;
+        return $res;
+    }
+
+    public function getUserGravatar(string $user) {
+        $res = $this->db->select("*")
+        ->from("User")
+        ->where("username = ?")
+        ->execute([$user])
+        ->fetch();
+        
+ 
+        return $res->gravatar;
     }
   
 }

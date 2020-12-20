@@ -26,7 +26,7 @@ class CreateUserForm extends FormModel
             ],
             [
                 "username" => [
-                    "type"        => "text",
+                    "type"        => "email",
                     // "description" => "Here you can place a description.",
                     "placeholder" => "Here is a placeholder",
                 ],
@@ -81,6 +81,7 @@ class CreateUserForm extends FormModel
         $user->setDb($this->di->get("dbqb"));
         $user->username = $username;
         $user->setPassword($password);
+        $user->setGravatar($username);
         $user->createdAt();
         $user->save();
 
