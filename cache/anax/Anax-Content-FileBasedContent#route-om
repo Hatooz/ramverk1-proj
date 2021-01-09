@@ -1,39 +1,55 @@
-O:8:"stdClass":7:{s:4:"file";s:5:"om.md";s:7:"section";s:0:"";s:5:"level";i:0;s:8:"internal";b:0;s:7:"tocable";b:0;s:5:"views";a:4:{s:5:"flash";a:3:{s:6:"region";s:5:"flash";s:8:"template";s:21:"anax/v2/image/default";s:4:"data";a:1:{s:3:"src";s:68:"image/theme/tree.jpg?width=1100&height=150&crop-to-fit&area=0,0,30,0";}}s:8:"kursrepo";a:4:{s:5:"title";s:8:"Kursrepo";s:4:"data";a:2:{s:7:"content";s:305:"<h4>Kursrepo</h4>
+O:8:"stdClass":7:{s:4:"file";s:5:"om.md";s:7:"section";s:0:"";s:5:"level";i:0;s:8:"internal";b:0;s:7:"tocable";b:0;s:5:"views";a:1:{s:4:"main";a:2:{s:8:"template";s:23:"anax/v2/article/default";s:4:"data";a:2:{s:7:"content";s:1082:"<!-- ---
+views:
+    kursrepo:
+        region: sidebar-right
+        template: anax/v2/block/default
+        data:
+            meta: 
+                type: single
+                route: block/om-kursrepo
 
-<p>Skriv något kort om kursen och länka till <a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/XXX">kursens hemsida på dbwebb.se</a> och till <a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/XXX">kursrepot på GitHub</a>.</p>
-";s:4:"meta";a:2:{s:4:"type";s:6:"single";s:5:"route";s:17:"block/om-kursrepo";}}s:6:"region";s:13:"sidebar-right";s:8:"template";s:21:"anax/v2/block/default";}s:8:"redovisa";a:4:{s:5:"title";s:19:"Redovisa på GitHub";s:4:"data";a:2:{s:7:"content";s:215:"<h4>Redovisa på GitHub</h4>
+    redovisa:
+        region: sidebar-right
+        template: anax/v2/block/default
+        data:
+            meta: 
+                type: single
+                route: block/om-redovisa
+--- -->
 
-<p>Skriv något kort om ditt redovisa-repo och länka till <a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/XXX">repot för me/redovisa på GitHub</a>.</p>
-";s:4:"meta";a:2:{s:4:"type";s:6:"single";s:5:"route";s:17:"block/om-redovisa";}}s:6:"region";s:13:"sidebar-right";s:8:"template";s:21:"anax/v2/block/default";}s:4:"main";a:2:{s:8:"template";s:23:"anax/v2/article/default";s:4:"data";a:2:{s:7:"content";s:565:"<h1>Om</h1>
+<h1>About</h1>
 
-<p>Detta innehåll är skrivet i markdown och du hittar innehållet i filen <code>content/om.md</code>.</p>
+<p>This site is dedicated to all things related to cygwin. It is a forum where you can ask, discuss, write tips or generally talk about how awesome cygwin is. If you find this interesting and have some burning stuff you want to share about cygwin, please make your account and start sharing now!</p>
 
-<p>Skriv några kloka ord om kursen?</p>
+<p>You can find the git rep for this site <a href="https://github.com/Hatooz/ramverk1-proj">here</a>.</p>
 
-<p>Lägg till en representativ bild för kursen, enligt ditt egna val.</p>
+<p>About me:
+My name is Hatem. I am a student at BTH university doing my second year on their webprogramming degree. This project is the culmination for the course about frameworks and how they work. This site is written in PHP using the Anax framework.</p>
+";s:7:"excerpt";s:1082:"<!-- ---
+views:
+    kursrepo:
+        region: sidebar-right
+        template: anax/v2/block/default
+        data:
+            meta: 
+                type: single
+                route: block/om-kursrepo
 
-<figure class="figure">
-<a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/car.png"><img src="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/car.png?w=300" alt="En fin bil som demobild."/></a>
-<figcaption>
+    redovisa:
+        region: sidebar-right
+        template: anax/v2/block/default
+        data:
+            meta: 
+                type: single
+                route: block/om-redovisa
+--- -->
 
-<p>En fin bil som demobild.</p>
+<h1>About</h1>
 
-</figcaption>
-</figure>
-";s:7:"excerpt";s:565:"<h1>Om</h1>
+<p>This site is dedicated to all things related to cygwin. It is a forum where you can ask, discuss, write tips or generally talk about how awesome cygwin is. If you find this interesting and have some burning stuff you want to share about cygwin, please make your account and start sharing now!</p>
 
-<p>Detta innehåll är skrivet i markdown och du hittar innehållet i filen <code>content/om.md</code>.</p>
+<p>You can find the git rep for this site <a href="https://github.com/Hatooz/ramverk1-proj">here</a>.</p>
 
-<p>Skriv några kloka ord om kursen?</p>
-
-<p>Lägg till en representativ bild för kursen, enligt ditt egna val.</p>
-
-<figure class="figure">
-<a href="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/car.png"><img src="http://localhost:8080/dbwebb/ramverk1/me/kmom10/ramverk1-proj/htdocs/image/car.png?w=300" alt="En fin bil som demobild."/></a>
-<figcaption>
-
-<p>En fin bil som demobild.</p>
-
-</figcaption>
-</figure>
-";}}}s:11:"frontmatter";a:2:{s:5:"views";a:2:{s:8:"kursrepo";a:3:{s:6:"region";s:13:"sidebar-right";s:8:"template";s:21:"anax/v2/block/default";s:4:"data";a:1:{s:4:"meta";a:2:{s:4:"type";s:6:"single";s:5:"route";s:17:"block/om-kursrepo";}}}s:8:"redovisa";a:3:{s:6:"region";s:13:"sidebar-right";s:8:"template";s:21:"anax/v2/block/default";s:4:"data";a:1:{s:4:"meta";a:2:{s:4:"type";s:6:"single";s:5:"route";s:17:"block/om-redovisa";}}}}s:5:"title";s:2:"Om";}}
+<p>About me:
+My name is Hatem. I am a student at BTH university doing my second year on their webprogramming degree. This project is the culmination for the course about frameworks and how they work. This site is written in PHP using the Anax framework.</p>
+";}}}s:11:"frontmatter";a:1:{s:5:"title";s:5:"About";}}
