@@ -11,7 +11,7 @@ return [
     "items" => [
         [
             "text" => "Hem",
-            "url" => "",
+            "url" => "question",
             "title" => "Första sidan, börja här.",
         ],
         // [
@@ -55,8 +55,13 @@ return [
         ],
         [
             "text" => "Question",
-            "url" => "question",
+            "url" => "question/allquestions",
             "title" => "Question",
+        ],
+        [
+            "text" => "Tag",
+            "url" => "tag",
+            "title" => "Tag",
         ],
         [
             "text" => "Login",

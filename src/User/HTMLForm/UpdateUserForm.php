@@ -4,7 +4,7 @@ namespace Hami\User\HTMLForm;
 
 use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
-use Anax\User\User;
+use Hami\User\User;
 /**
  * Form to update an item.
  */
@@ -37,6 +37,10 @@ class UpdateUserForm extends FormModel
                     "type"        => "text",
                     "readonly" => "true",
                     "value" => $user->username,
+                ],
+                        
+                "email" => [
+                    "type"        => "email",
                 ],
                         
                 "password" => [
@@ -99,6 +103,8 @@ class UpdateUserForm extends FormModel
         $user->setDb($this->di->get("dbqb"));
         $user->find("id", $this->form->value("id"));
         $user->username = $this->form->value("username");
+        $user->email = $this->form->value("email");
+        $user->setGravatar($this->form->value("email"));
         $user->setPassword($this->form->value("password"));
         $user->save();
         return true;

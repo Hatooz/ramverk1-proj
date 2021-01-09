@@ -24,4 +24,16 @@ class Tag extends ActiveRecordModel
     public $id;
     public $title;
     public $question;
+
+
+    public function getQuestion (string $title)
+    {
+        $res = $this->db->select("*")
+        ->from("Question")
+        ->where("title = ?")
+        ->execute([$title])
+        ->fetchAll();
+ 
+ return $res;
+    }
 }

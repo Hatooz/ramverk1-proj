@@ -81,7 +81,7 @@ Tags: <?php foreach ($tag as $tag) : ?>
         
 
         <div class="profile-bubble">
-            Answer by <a class="" href="<?= url("user/contributions/{$answer->user}"); ?>"><?= $answer->user ?></a>
+            Answer by <a class="" href="<?= url("user/contributions/{$answer->user}"); ?>"><?= $answer->user ?></a><br>
             <img class="detail-gravatar" src="<?php echo $answer->gravatar; ?>" alt="" />
 
         </div>

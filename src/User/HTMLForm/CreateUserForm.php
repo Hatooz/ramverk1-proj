@@ -4,7 +4,7 @@ namespace Hami\User\HTMLForm;
 
 use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
-use Anax\User\User;
+use Hami\User\User;
 
 /**
  * Example of FormModel implementation.
@@ -26,6 +26,11 @@ class CreateUserForm extends FormModel
             ],
             [
                 "username" => [
+                    "type"        => "text",
+                    // "description" => "Here you can place a description.",
+                    "placeholder" => "Here is a placeholder",
+                ],
+                "email" => [
                     "type"        => "email",
                     // "description" => "Here you can place a description.",
                     "placeholder" => "Here is a placeholder",
@@ -65,6 +70,7 @@ class CreateUserForm extends FormModel
     {
        // Get values from the submitted form
         $username       = $this->form->value("username");
+        $email      = $this->form->value("email");
         $password      = $this->form->value("password");
         $passwordAgain = $this->form->value("password-again");
 
@@ -80,8 +86,9 @@ class CreateUserForm extends FormModel
         $user = new User();
         $user->setDb($this->di->get("dbqb"));
         $user->username = $username;
+        $user->email = $email;
         $user->setPassword($password);
-        $user->setGravatar($username);
+        $user->setGravatar($email);
         $user->createdAt();
         $user->save();
 

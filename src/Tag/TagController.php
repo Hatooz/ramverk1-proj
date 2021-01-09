@@ -53,9 +53,14 @@ class TagController implements ContainerInjectableInterface
         $page = $this->di->get("page");
         $tag = new Tag();
         $tag->setDb($this->di->get("dbqb"));
+        $items = $tag->findAll();
+
+        foreach ($items as $key => $item) {
+            $item->questionId = $tag->getQuestion($item->question)[0]->id;
+        }
 
         $page->add("tag/crud/view-all", [
-            "items" => $tag->findAll(),
+            "items" => $items,
         ]);
 
         return $page->render([

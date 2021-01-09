@@ -7100,13 +7100,18 @@ fieldset {
 }
 .crud-table {
   width: 100%;
+  table-layout: fixed;
   text-align: center;  
   border-collapse: collapse;
   margin-bottom: 30px;
 }
 .crud-table td {
   border: 1px solid  #39ff14;  
-  padding: 5px
+  padding: 5px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+
 }
 .crud-table a {
   text-decoration: none;
@@ -7121,7 +7126,7 @@ fieldset {
   border-radius: 5px;
 }
 
-.profile-bubble {
+.profile-bubble {  
   width: 30%;
   background-color: #3b3e50;
   /* float: right; */
@@ -7131,7 +7136,7 @@ fieldset {
   padding: 10px;
   border-radius: 10px;
   overflow: hidden;
-  height: 100px;
+  height: 80px;
 }
 
 .profile-bubble img {
@@ -7153,3 +7158,4 @@ fieldset {
   border-bottom: 1px solid #39ff14;
   margin-bottom: 10px;
 } 
+

@@ -1,6 +1,6 @@
 <?php
 
-namespace Anax\User;
+namespace Hami\User;
 
 use Anax\DatabaseActiveRecord\ActiveRecordModel;
 
@@ -21,6 +21,7 @@ class User extends ActiveRecordModel
      */
     public $id;
     public $username;
+    public $email;
     public $password;
     public $gravatar;
     public $created;
@@ -64,10 +65,6 @@ class User extends ActiveRecordModel
     public function findUser($username) 
     {
         return $this->find("username", $username);
-    }
-    public function findUserById($id) 
-    {
-        return $this->find("id", $id);
     }
 
     public function setGravatar( $email, $s = 80, $d = 'mp', $r = 'g', $img = false, $atts = array() ) {

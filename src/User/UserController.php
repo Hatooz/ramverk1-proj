@@ -4,7 +4,7 @@ namespace Hami\User;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
-use Anax\User\User;
+use Hami\User\User;
 use Hami\Answer\Answer;
 use Hami\Question\Question;
 use Hami\User\HTMLForm\UserLoginForm;

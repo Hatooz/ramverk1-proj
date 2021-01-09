@@ -54,7 +54,7 @@ class DeleteForm extends FormModel
 
         $answers = ["-1" => "Select an item..."];
         foreach ($answer->findAll() as $obj) {
-            $answers[$obj->id] = "{$obj->column1} ({$obj->id})";
+            $answers[$obj->id] = "{$obj->id} ({$obj->id})";
         }
 
         return $answers;

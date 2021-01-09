@@ -4,7 +4,7 @@ namespace Hami\User\HTMLForm;
 
 use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
-use Anax\User\User;
+use Hami\User\User;
 /**
  * Example of FormModel implementation.
  */

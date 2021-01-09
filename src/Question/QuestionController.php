@@ -6,7 +6,7 @@ use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 use Hami\Answer\Answer;
 use Hami\Comment\Comment;
-use Anax\User\User;
+use Hami\User\User;
 use Hami\MyTextFilter\MyTextFilter;
 use Hami\Question\HTMLForm\CreateForm;
 use Hami\Question\HTMLForm\EditForm;
@@ -64,6 +64,27 @@ class QuestionController implements ContainerInjectableInterface
             "topusers" => $question->findTopUsers(),
             "toptags" => $question->findTopTags(),
             "latestQuestions" => $question->findLatestQuestions()
+        ]);
+
+        return $page->render([
+            "title" => "A collection of items",
+            
+        ]);
+    }
+    /**
+     * Show all items.
+     *
+     * @return object as a response object
+     */
+    public function allquestionsActionGet() : object
+    {
+        $page = $this->di->get("page");
+        $question = new Question();
+        $question->setDb($this->di->get("dbqb"));
+        
+
+        $page->add("question/crud/allquestions", [
+            "items" => $question->findAll()           
         ]);
 
         return $page->render([

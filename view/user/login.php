@@ -19,4 +19,4 @@ if (isset($class)) {
 <?= $content ?>
 </article>
 
-
+<p>Don't have an account? Sign up <a href="<?= url("user/create"); ?>">here</a></p>

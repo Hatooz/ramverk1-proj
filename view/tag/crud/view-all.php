@@ -16,14 +16,8 @@ $items = isset($items) ? $items : null;
 $urlToCreate = url("tag/create");
 $urlToDelete = url("tag/delete");
 
-
-
 ?><h1>View all items</h1>
 
-<p>
-    <a href="<?= $urlToCreate ?>">Create</a> | 
-    <a href="<?= $urlToDelete ?>">Delete</a>
-</p>
 
 <?php if (!$items) : ?>
     <p>There are no items to show.</p>
@@ -32,19 +26,15 @@ $urlToDelete = url("tag/delete");
 endif;
 ?>
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Column1</th>
-        <th>Column2</th>
+<table class="crud-table">
+    <tr>        
+        <th>Title</th>
+        <th>Tagged Question</th>
     </tr>
     <?php foreach ($items as $item) : ?>
-    <tr>
-        <td>
-            <a href="<?= url("tag/update/{$item->id}"); ?>"><?= $item->id ?></a>
-        </td>
-        <td><?= $item->column1 ?></td>
-        <td><?= $item->column2 ?></td>
+    <tr>        
+        <td><?= $item->title ?></td>
+        <td><a href="<?= url("question/details/{$item->questionId}"); ?>"><?= $item->question ?></a></td>
     </tr>
     <?php endforeach; ?>
 </table>

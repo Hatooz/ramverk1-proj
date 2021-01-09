@@ -22,56 +22,12 @@ $urlToDelete = url("question/delete");
 
 $currentUser = $this->di->session->get("loggedInUserName");
 ?>
-
 <p>
     <a class="detail-button" href="<?= $urlToCreate ?>">Post New Question</a>
     
 </p>
 
-<?php if (!$items) : ?>
-    <p>There are no questions to show.</p>
-<?php
-    return;
-endif;
-?>
-
-<h1>Top Users</h1>
-<table class="crud-table">
-
-    <tr>
-        <th>Email</th>
-        
-        
-    </tr>
-    <?php foreach ($topusers as $user) : ?>
-    <tr>
-        <td>
-            <a href="<?= url("user/contributions/{$user->user}"); ?>"><?= $user->user ?></a>
-        </td>
-        
-        
-    </tr>
-    <?php endforeach; ?>
-</table>
-
-<h1>Top Tags</h1>
-<table class="crud-table">
-    <tr>
-       
-        <th>Title</th>
-        
-    </tr>
-    <?php foreach ($toptags as $item) : ?>
-    <tr>
-        <td>
-            <a href="<?= url("question/tags/{$item->title}"); ?>"><?= $item->title ?></a>
-        </td>
-    
-    </tr>
-    <?php endforeach; ?>
-</table>
-
-<h1>Most Recent Questions</h1>
+<h1>All Questions</h1>
 <table class="crud-table">
     <tr>
         <th>Id</th>
@@ -79,7 +35,7 @@ endif;
         <th>Tag</th>
         <th>User</th>
     </tr>
-    <?php foreach ($latestQuestions as $item) : ?>
+    <?php foreach ($items as $item) : ?>
     <tr>
         <td>
             <a href="<?= url("question/details/{$item->id}"); ?>"><?= $item->id ?></a>

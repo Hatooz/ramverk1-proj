@@ -78,7 +78,7 @@ class CreateForm extends FormModel
             $tag = new Tag();
             $tag->setDb($this->di->get("dbqb"));
             $tag->title = $newTag;
-            $tag->question = $this->form->value("title");
+            $tag->question = $this->form->value("title");            
             $tag->save();
         }
 
