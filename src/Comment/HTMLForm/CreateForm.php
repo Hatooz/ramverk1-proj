@@ -31,27 +31,27 @@ class CreateForm extends FormModel
                 ],
                 
                 "question" => [
-                    "type" => "text",
+                    "type" => "hidden",
                     // "validation" => ["not_empty"],
                     "readonly" => true,
                     "value" => $this->di->session->get("currentAnswer") ? null : $this->di->session->get("currentQuestion")
                 ],
                 "answer" => [
-                    "type" => "text",
+                    "type" => "hidden",
                     // "validation" => ["not_empty"],
                     "readonly" => true,
                     "value" => $this->di->session->get("currentAnswer")
                 ],
                 
                 "user" => [
-                    "type" => "text",
+                    "type" => "hidden",
                     "readonly" => true,
                     "value" => $this->di->session->get("loggedInUserName"),
                 ],
 
                 "submit" => [
                     "type" => "submit",
-                    "value" => "Submit Answer",
+                    "value" => "Submit Comment",
                     "callback" => [$this, "callbackSubmit"]
                 ],
             ]

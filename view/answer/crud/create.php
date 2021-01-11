@@ -21,6 +21,6 @@ $urlToViewItems = url("answer");
 
 <?= $form ?>
 
-<p>
+<!-- <p>
     <a href="<?= $urlToViewItems ?>">View all</a>
-</p>
+</p> -->

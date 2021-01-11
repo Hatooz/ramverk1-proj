@@ -31,14 +31,14 @@ class CreateForm extends FormModel
                 ],
                 
                 "question" => [
-                    "type" => "text",
+                    "type" => "hidden",
                     "validation" => ["not_empty"],
                     "readonly" => true,
                     "value" => $this->di->session->get("currentQuestion")
                 ],
                 
                 "user" => [
-                    "type" => "text",
+                    "type" => "hidden",
                     "readonly" => true,
                     "value" => $this->di->session->get("loggedInUserName"),
                 ],

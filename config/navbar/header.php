@@ -10,9 +10,9 @@ return [
     // Here comes the menu items
     "items" => [
         [
-            "text" => "Hem",
+            "text" => "Home",
             "url" => "question",
-            "title" => "Första sidan, börja här.",
+            "title" => "Landing page",
         ],
         // [
         //     "text" => "Redovisning",
@@ -34,9 +34,9 @@ return [
         //     ],
         // ],
         [
-            "text" => "Om",
+            "text" => "About",
             "url" => "om",
-            "title" => "Om denna webbplats.",
+            "title" => "About this website",
         ],
         // [
         //     "text" => "Styleväljare",

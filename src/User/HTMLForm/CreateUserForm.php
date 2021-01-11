@@ -28,18 +28,18 @@ class CreateUserForm extends FormModel
                 "username" => [
                     "type"        => "text",
                     // "description" => "Here you can place a description.",
-                    "placeholder" => "Here is a placeholder",
+                    "placeholder" => "Username...",
                 ],
                 "email" => [
                     "type"        => "email",
                     // "description" => "Here you can place a description.",
-                    "placeholder" => "Here is a placeholder",
+                    "placeholder" => "Email...",
                 ],
                         
                 "password" => [
                     "type"        => "password",
                     // "description" => "Here you can place a description.",
-                    "placeholder" => "Here is a placeholder",
+                    "placeholder" => "",
                 ],
 
                 "password-again" => [
