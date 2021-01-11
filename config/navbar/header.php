@@ -11,7 +11,7 @@ return [
     "items" => [
         [
             "text" => "Home",
-            "url" => "question",
+            "url" => "",
             "title" => "Landing page",
         ],
         // [

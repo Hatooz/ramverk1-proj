@@ -71,6 +71,24 @@ class QuestionController implements ContainerInjectableInterface
             
         ]);
     }
+
+    public function omActionGet() : object
+    {
+        $page = $this->di->get("page");
+        $question = new Question();
+        $question->setDb($this->di->get("dbqb"));
+        
+
+        $page->add("question/crud/about", [
+          
+        ]);
+
+        return $page->render([
+            "title" => "A collection of items",
+            
+        ]);
+    }
+    
     /**
      * Show all items.
      *

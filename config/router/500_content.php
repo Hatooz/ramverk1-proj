@@ -7,7 +7,6 @@ return [
         [
             "info" => "Flat file content controller.",
             "mount" => null,
-            "handler" => "\Anax\Content\FileBasedContentController",
-        ],
+            "handler" => "\Hami\Question\QuestionController",        ],
     ]
 ];
